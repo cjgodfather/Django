@@ -1,0 +1,54 @@
+{% extends "event/base.html" %} {% block content %}
+
+<div>
+  <h3>Order Summary</h3>
+  {% if ticket_list %}
+  <div class="col-md-6">
+    <table class="table table-striped table-hover border">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Event Name</th>
+          <th>Ticket Type</th>
+          <th>Ticket Price</th>
+          <th>Qty</th>
+          <th>Ticket Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ticket in ticket_list %}
+        <tr>
+          <th>{{ forloop.counter }}</th>
+          <td>{{ ticket.ticket.event }}</td>
+          <td>{{ ticket.ticket.ticket_type }}</td>
+          <td>${{ ticket.ticket.price }}</td>
+          <td>{{ ticket.quantity }}</td>
+          <td>${{ ticket.calculate_ticket_price }}</td>
+          <td>
+            <form method="POST" action="delete_ticket/">
+              {% csrf_token %}
+              <input type="hidden" name="ticket" value="{{ ticket.id }}" />
+              <input type="submit" value="remove" />
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p>Total: ${{ cart.cart_total }}</p>
+  </div>
+  <div>
+    <a href="/event/"
+      ><button class="btn btn-secondary">Continue shopping</button></a
+    >
+    <a href="/event/cart/checkout"
+      ><button class="btn btn-primary">Checkout</button></a
+    >
+  </div>
+  {% else %}
+  <p>There is no tickets in your cart</p>
+  {% endif %}
+</div>
+
+{% endblock %}

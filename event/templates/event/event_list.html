@@ -1,0 +1,40 @@
+{% extends "event/base.html" %} {% block content %}
+<div class="row">
+  <div class="col-md-12 align-self-center ">
+    {% include "event/search_snippet.html" %} {% for object in event_list %}
+    {% include "event/event_snippet.html" with event=object %}
+    </div>
+
+    {% endfor %}
+  </div>
+
+  {% if request.user.username == user_viewed %}
+
+  <div class="col-md-12 align-self-center ">
+    <h3 class="text-center">Event you may like:</h3>
+    {% include "event/event_snippet.html" with event=viewed_item %}
+  </div>
+  <!-- {{ viewed_item.name }}
+  {{ viewed_item.date }} -->
+  {% endif %}
+
+  <div class="text-center" style="width:100%">
+    <span class="step-links">
+      {% if event_list.has_previous %}
+      <a href="?page=1">&laquo; first</a>
+      <a href="?page={{ event_list.previous_page_number }}">previous</a>
+      {% endif %}
+
+      <span class="current">
+        Page {{ event_list.number }} of {{ event_list.paginator.num_pages }}.
+      </span>
+
+      {% if event_list.has_next %}
+      <a href="?page={{ event_list.next_page_number }}">next</a>
+      <a href="?page={{ event_list.paginator.num_pages }}">last &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+</div>
+
+{% endblock content %}

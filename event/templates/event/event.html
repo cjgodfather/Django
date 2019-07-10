@@ -1,0 +1,40 @@
+{% extends "event/base.html" %} {% block content %}
+<div>
+  {% include "event/event_snippet.html" %}
+  <div class="mx-auto" style="width:70%">
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Ticket Type</th>
+          <th scope="col">Price</th>
+          <th scope="col">Qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ticket in tickets %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ ticket.ticket_type }}</td>
+          <td>{{ ticket.price }}</td>
+          <form method="POST" action="add-to-cart/">
+            <td>{{ form.quantity }}</td>
+            <td>
+              {% csrf_token %}
+              <input type="submit" value="add" /><input
+                type="hidden"
+                name="ticket_type"
+                value="{{ ticket.ticket_type }}"
+              />
+            </td>
+          </form>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <button class="btn btn-outline-secondary">
+      <a href="/event/cart/">Go to Cart</a>
+    </button>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+<form method="GET" action="/event/">
+  <div class="form-row align-items-center">
+    <div class="col-sm-2 my-1">
+      <label class="sr-only" for="inlineFormInputName">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        id="inlineFormInputGroup"
+        placeholder="name"
+      />
+    </div>
+    <div class="col-sm-3 my-1">
+      <label class="sr-only" for="inlineFormInputGroupUsername">Date</label>
+      <div class="input-group">
+        <input
+          type="date"
+          class="form-control"
+          name="date"
+          id="inlineFormInputGroup"
+          placeholder="date"
+        />
+      </div>
+    </div>
+    <div class="col-sm-2 my-1">
+      <label class="sr-only" for="inlineFormInputGroupUsername">Location</label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          name="location"
+          id="inlineFormInputGroup"
+          placeholder="location"
+        />
+      </div>
+    </div>
+    <div class="col-sm-2 my-1">
+      <label class="sr-only" for="inlineFormInputGroupUsername">Category</label>
+      <select
+        class="custom-select mr-sm-2"
+        name="category"
+        id="inlineFormCustomSelect"
+      >
+        <option selected></option>
+        <option value="MUSIC">Music</option>
+        <option value="ART">Art</option>
+        <option value="PARTY">Party</option>
+        <option value="SPORTS">Sports</option>
+        <option value="BUSINESS">Business</option>
+      </select>
+    </div>
+    <div class="col-sm-1 my-2">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          name="free"
+          type="checkbox"
+          id="autoSizingCheck2"
+        />
+        <label class="form-check-label" for="gridCheck">
+          free
+        </label>
+      </div>
+    </div>
+    <div class="col-auto my-1">
+      <input type="submit" class="btn btn-primary btn-small" value="search" />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,19 @@
+<div class="card bg-light mx-auto mt-2 mb-2" style="width:50%">
+  <div class="card-body">
+    <h5 class="card-title">{{ event.name }}</h5>
+    <p class="card-text">
+      Date: <span>{{ event.date }}</span>
+    </p>
+    <p></p>
+    <p class="card-text">
+      Location: <span>{{ event.location }}</span>
+    </p>
+    <p class="card-text">{{ event.description }}</p>
+    {% if event.free %}
+    <p>Free</p>
+    {% endif %}
+    <a class="card-link" href="{{ event.get_absolute_url }}"
+      ><button class="btn btn-dark">see detail</button></a
+    >
+  </div>
+</div>

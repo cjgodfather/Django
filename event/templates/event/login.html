@@ -1,0 +1,29 @@
+{% extends "event/base.html" %} {% block content %}
+<form method="POST" action="/event/login/">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-5 mr-1">
+      <input
+        type="text"
+        name="username"
+        class="form-control"
+        value=""
+        placeholder="username"
+      />
+    </div>
+    <div class="col-5 mr-1">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        value=""
+        placeholder="password"
+      />
+    </div>
+    <div class="col-2 mr-1">
+      <input type="submit" class="form-control" value="login" />
+    </div>
+  </div>
+</form>
+
+{% endblock %}

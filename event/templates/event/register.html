@@ -1,0 +1,10 @@
+{% extends "event/base.html" %} {% block content %}
+<form method="POST" action="/event/register/">
+  {% csrf_token %}
+  <div class="input-group flex-wrap">
+    {{ register_form.as_table }}
+    <input type="submit" value="register" />
+  </div>
+</form>
+
+{% endblock %}
